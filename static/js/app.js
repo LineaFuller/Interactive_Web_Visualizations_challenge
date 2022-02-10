@@ -6,19 +6,15 @@ const dataPromise = d3.json("./data/samples.json");
 // d3.json("./data/samples.json").then((data) => console.log(data));
 
 // Dropdown menu 
-d3.json("./data/samples.json").then((allData) => {
-    var id = allData.names;
-    // console.log(id);
-   d3.selectAll("#selDataset").on("change", value);
-   function value() {
-       var dropdownMenu =  d3.selectAll("#selDataset");
-      return dropdownMenu.property(id);
-   }
-
-
+d3.json("./data/samples.json").then((data) => {
+  var metadata = d3.select("#sample-metadata");
+  metadata.html("");
+  Object.entries(data).forEach(([key, value]) => {
+    divMetadata.append("div").text(`${key}: ${value}`);
+  });
 })
 
-// Dropdown menu
+// Sample ID
 var dropdownID = 940;
 
 
@@ -29,6 +25,7 @@ d3.json("./data/samples.json").then((data) => {
   // })[0]
   // console.log(sample)
   var sample = data.samples.filter((objData) => objData.id == dropdownID)[0];
+ 
   // console.log(sample)
   var topValues = sample.sample_values;
   var otuID = sample.otu_ids;
@@ -79,6 +76,23 @@ d3.json("./data/samples.json").then((data) => {
   Plotly.newPlot("bubble", bubble_data, bubbleLayout);
 });
 
+function init (){
+  var selector = d3.select("#selDataset");
+  d3.json("./data/samples.json").then((data) => {
+    var sampleNames = data.names;
+    sampleNames.forEach((sample) => {
+      selector
+      .append("option")
+      .text(sample)
+      .property("value", sample);
+    })
+  })
+}
+
+
+// Get the chart's base64 image string
+// var image = bubble_chart.toBase64Image();
+// console.log(image);
 
 
 // Call updatePlotly() when a change takes place to the DOM
@@ -87,4 +101,4 @@ d3.json("./data/samples.json").then((data) => {
 // function updatePlotly(){
 //     var dropdownMenu = d3.select("#selDataset");
 //     var dataset = dropdownMenu.property("value")
-    
+  
