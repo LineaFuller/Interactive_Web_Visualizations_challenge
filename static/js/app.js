@@ -90,15 +90,9 @@ function init (){
 }
 
 
-// Get the chart's base64 image string
-// var image = bubble_chart.toBase64Image();
-// console.log(image);
-
-
-// Call updatePlotly() when a change takes place to the DOM
-// d3.selectAll("#selDataset").on("change", updatePlotly);
-
+// Update Function
 // function updatePlotly(){
 //     var dropdownMenu = d3.select("#selDataset");
-//     var dataset = dropdownMenu.property("value")
+//     var dataset = dropdownMenu.property("value");
+
   
