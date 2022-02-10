@@ -2,7 +2,7 @@
 
 In this assignment, I will build an interactive dashboard to explore the Belly Button Biodiversity dataset, which catalogs the microbes that colonize human navels. The dataset reveals that a small handful of microbial species (also called operational taxonomic units, or OTUs, in the study) were present in more than 70% of people, while the rest were relatively rare.
 
-# Step 1
+# Process
 
 Utilized the D3 library to read in samples.json and created a horizontal bar chart with a dropdown menu to display the top 10 OTUs found in that individual. I used sample_values as the values for the bar chart and used otu_ids as the labels for the bar chart. Lastly, I assigned the otu_labels as the hovertext for the chart.
 
